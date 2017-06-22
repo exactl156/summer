@@ -47,7 +47,7 @@ public class board2 extends JPanel {
 	public board2() throws IOException 
 	{
 	
-		buttons= new mycharacter[8][8];
+		buttons= new mycharacter[9][9];
 		
 		xsize = getToolkit().getScreenSize().getWidth();
 		ysize = getToolkit().getScreenSize().getHeight();
@@ -58,8 +58,8 @@ public class board2 extends JPanel {
 		setLayout(null);
 		
 		
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
 			A=	new mycharacter(i,j,0);
 				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 				
@@ -83,9 +83,9 @@ public class board2 extends JPanel {
 		
 		
 
-		for (int i = 0; i < 8; i++) 
+		for (int i = 0; i < 9; i++) 
 		{
-			for (int j = 0; j < 8; j++) 
+			for (int j = 0; j < 9; j++) 
 			{
 				System.out.print(buttons.length);
 				if(buttons.length>0){		

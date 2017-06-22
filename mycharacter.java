@@ -20,10 +20,29 @@ private ActionListener l;
 
 	public mycharacter(int xpos, int ypos, int typeOfpiece) {
 	super();
+	this.setForeground(Color.ORANGE);
 	Xpos = xpos;
 	Ypos = ypos;
-	if(Xpos%2==1)
+	if((Xpos+Ypos)%2==1)
 	this.setBackground(Color.BLACK);
+	if(xpos==0)
+	{
+		String st = ""+(char)((int)'a'+ypos);
+		this.setText(st);
+	}
+	if(Ypos==0)
+	{
+		String st =""+Xpos;
+	
+		this.setText(st);
+	}
+	if(Ypos==0&& Xpos==0)
+	{
+		String st ="";
+	
+		this.setText(st);
+	}
+	
 	this.typeOfpiece=typeOfpiece;
 	isSelected = false;	
 	l = new ActionListener() {
