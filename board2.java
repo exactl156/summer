@@ -36,80 +36,72 @@ public class board2 extends JPanel {
 	 * @param e 
 	 * @param d 
 	 */
-	JButton A;
+	mycharacter A;
 
 	private double xsize;
 
 	private double ysize;
-	private ArrayList<ArrayList<JButton> > buttons;
+	private mycharacter[][]  buttons;
 
-	private ArrayList<JButton> rowButtons;
+
 	public board2() throws IOException 
 	{
-		buttons= new ArrayList<ArrayList<JButton>>();
-		rowButtons= new ArrayList<JButton>();
+	
+		buttons= new mycharacter[8][8];
+		
 		xsize = getToolkit().getScreenSize().getWidth();
 		ysize = getToolkit().getScreenSize().getHeight();
 		setBackground(Color.CYAN);
 		setBounds(0, 0, (int)xsize, (int)ysize);
-		GridBagLayout gridBagLayout = new GridBagLayout();
-	
-		setLayout(gridBagLayout);
-		
 		
 	
-		GridBagConstraints c = new  GridBagConstraints();
-		c.fill=GridBagConstraints.HORIZONTAL;
+		setLayout(null);
+		
+		
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				c.ipady=70;
-				c.ipadx=70;
-				c.gridx = (int) (xsize/8*i);
-				c.gridy = (int) (ysize/8*j);
-				c.gridwidth=(int) (xsize/8);
-				c.gridheight=(int) (ysize/8);
+			A=	new mycharacter(i,j,0);
+				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 				
-				A = new JButton();
-				
-				rowButtons.add(A);	
-				add(A, c);
+				buttons[i][j]=A;	
+				add(A);
 			}
 			
-			buttons.add(rowButtons);
-			rowButtons.removeAll(rowButtons);
-
 		}
-		
-		time = new Timer(100, new ActionListener() {
+		time = new Timer(10000, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Update();
 			}
 		});
 		time.start();
 	}
-	
 	public void Update()
-	{
+	{		
 		
 		
-		GridBagConstraints c = new  GridBagConstraints();
-		c.fill=GridBagConstraints.HORIZONTAL;
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				c.ipady=70;
-				c.ipadx=70;
-				c.gridx = (int) (xsize/8*j);
-				c.gridy = (int) (ysize/8*i);
-				c.gridwidth=(int) (xsize/8);
-				c.gridheight=(int) (ysize/8);	
+		
+
+		for (int i = 0; i < 8; i++) 
+		{
+			for (int j = 0; j < 8; j++) 
+			{
+				System.out.print(buttons.length);
+				if(buttons.length>0){		
+					mycharacter temp= buttons[i][j];
+					if(temp.isSelected)
+				{
+					temp.setIcon(new ImageIcon("ty.jpg"));
+					
+				}
+				
+				}
+				
 			}
 		}
 		
 	}
 
-	
 
 }

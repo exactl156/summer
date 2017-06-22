@@ -51,7 +51,7 @@ public class ChessFrame extends JFrame {
 				player2Time--;
 				bottomDisplay.setText(""+player2Time);
 			}
-			if(player1Time==3590)
+			if(player1Time==3570)
 			{
 				reset();
 			}
