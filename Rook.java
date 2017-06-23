@@ -15,8 +15,13 @@ public class Rook extends mycharacter
 	private static final long serialVersionUID = -7771619322964426430L;
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
+	public void move() 
+	{
+		if(checkIfValidMove())
+		{
+			Xpos=newXMoveLoc;
+			Ypos=newYMoveLoc;
+		}
 		
 	}
 	public boolean checkIfValidMove()
@@ -92,9 +97,7 @@ public class Rook extends mycharacter
 	}
 	
 	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
 		newXMoveLoc=y.Xpos;
 		newYMoveLoc=y.Ypos;
 	}
-	
 }
