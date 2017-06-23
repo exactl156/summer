@@ -13,14 +13,16 @@ public class mycharacter extends JButton {
 	private static final long serialVersionUID = -1077474492673682496L;
 protected int Xpos;
 protected int Ypos;
-protected int typeOfpiece;
-public boolean isSelected;
+protected mycharacter[][] z;
+protected boolean isSelected;
 private ActionListener l;
+protected boolean isBlack;
 
-
-	public mycharacter(int xpos, int ypos, int typeOfpiece) {
+	public mycharacter(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 	super();
+	isBlack=bl;
 	this.setForeground(Color.ORANGE);
+	z=t;
 	Xpos = xpos;
 	Ypos = ypos;
 	if((Xpos+Ypos)%2==1)
@@ -33,17 +35,15 @@ private ActionListener l;
 	if(Ypos==0)
 	{
 		String st =""+Xpos;
-	
 		this.setText(st);
 	}
 	if(Ypos==0&& Xpos==0)
 	{
 		String st ="";
-	
 		this.setText(st);
 	}
 	
-	this.typeOfpiece=typeOfpiece;
+	
 	isSelected = false;	
 	l = new ActionListener() {
 		
@@ -83,11 +83,15 @@ public void setYpos(int ypos)
 {
 	Ypos = ypos;
 }
-
-	public mycharacter getUserInput(mycharacter y) 
+public void getUserInput(mycharacter y) 
 	{
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+public boolean checkIfValidMove()
+{
+	return true;
+}
+
 	
 }
