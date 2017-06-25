@@ -10,12 +10,9 @@ public class Queen extends mycharacter
 
 	@Override
 	public boolean checkIfValidMove() {
+		//horizontal and vertical
 		if(Xpos==newXMoveLoc||Ypos==newYMoveLoc)
 		{
-			if(Xpos!=newXMoveLoc&&Ypos!=newYMoveLoc)
-			{
-				return false;
-			}
 			if(Xpos==newXMoveLoc)
 			{
 				if(Ypos<newYMoveLoc)
@@ -79,11 +76,65 @@ public class Queen extends mycharacter
 					}
 				}
 			}
+			if(z[newXMoveLoc][newYMoveLoc].isBlack==this.isBlack)
+			{
+				return false;
+			}
 			return true;
 		}
+		
+		
+		
+		//diagonals
 		if(Math.abs((newXMoveLoc-Xpos))==Math.abs((newYMoveLoc-Ypos)))
 		{
-			
+			if(newXMoveLoc>Xpos)
+			{
+				if(newYMoveLoc>Ypos)
+				{
+				for(int i=1;i<Math.abs(newXMoveLoc-Ypos);i++ )
+					{
+						if(!(z[Ypos+i][Xpos+i]instanceof emptySquare))
+						{
+							return false;
+						}
+					}
+				}
+				else
+				{
+					for(int i=1;i<Math.abs(newXMoveLoc-Ypos);i++ )
+					{
+						if(!(z[Ypos-i][Xpos+i]instanceof emptySquare))
+						{
+							return false;
+						}
+					}
+				}
+				
+			}
+		}
+		else
+		{
+			if(newYMoveLoc>Ypos)
+			{
+			for(int i=1;i<Math.abs(newXMoveLoc-Ypos);i++ )
+				{
+					if(!(z[Ypos+i][Xpos-i]instanceof emptySquare))
+					{
+						return false;
+					}
+				}
+			}
+			else
+			{
+				for(int i=1;i<Math.abs(newXMoveLoc-Ypos);i++ )
+				{
+					if(!(z[Ypos-i][Xpos-i]instanceof emptySquare))
+					{
+						return false;
+					}
+				}
+			}
 		}
 		return false;
 	}

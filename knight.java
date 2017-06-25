@@ -13,6 +13,7 @@ public class knight extends mycharacter {
 	public knight(int x, int y,boolean black,mycharacter[][] t) {
 		// TODO Auto-generated constructor stub
 		super(x,y,black,t);
+		this.setVisible(true);
 		this.setBackground(Color.RED);
 	}
 

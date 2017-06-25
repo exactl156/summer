@@ -13,7 +13,7 @@ public class Rook extends mycharacter
 	public Rook(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
 	this.setBackground(Color.black);
-	
+	this.setEnabled(true);
 	}
 
 	/**

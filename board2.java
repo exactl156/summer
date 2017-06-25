@@ -62,11 +62,12 @@ public class board2 extends JPanel {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 			
-			A=	new emptySquare(i,j,true,buttons);
+			A=	new emptySquare(i,j,false,buttons);
 				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 					if(i==5&&j==4)
 					{
-						A= new Rook(i,j,true,buttons);
+						A= new knight(i,j,true,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 					}
 				
 				buttons[j][i]=A;	
@@ -95,8 +96,6 @@ public class board2 extends JPanel {
 				{
 					temp.hasmoved=false;
 					needsUpdating=true;		 
-					buttons[i][j] = new emptySquare(i, j,true, buttons);
-					buttons[temp.Ypos][temp.Xpos]=temp;
 					removeAll();
 					revalidate();
 					repaint();

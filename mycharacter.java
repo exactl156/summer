@@ -55,10 +55,12 @@ protected boolean hasmoved;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("666");
+			System.out.println("666"+isSelected);
 			if(!isSelected&&isSelectedObject==null)
 			{
 				isSelected=true;
 				setSelfIsSelectedObject();
+				System.out.println("676");
 				for(mycharacter[] x: z)
 				{
 					for(mycharacter y:x)
@@ -72,6 +74,7 @@ protected boolean hasmoved;
 				isSelected=false;
 				mycharacter t= getIsSelectedObject();
 				t.getUserInput(getSelf());
+				System.out.println("678");
 				t.move();
 				isSelectedObject=null;
 				hasmoved = true;
@@ -88,7 +91,7 @@ protected boolean hasmoved;
 	{
 		if(checkIfValidMove())
 		{
-			emptySquare	A=	new emptySquare(Ypos,Xpos,true,z);
+			emptySquare	A=	new emptySquare(Ypos,Xpos,false,z);
 			System.out.print("1");
 				z[Ypos][Xpos]=A;
 			Xpos=newXMoveLoc;
