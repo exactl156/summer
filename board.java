@@ -1,5 +1,4 @@
-package mychess;
-//This is a test, may not be compatible
+package chess;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,24 +1,29 @@
 package chess;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+
 public class knight extends mycharacter {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static int newXMoveLoc;
-	private static int newYMoveLoc;
+
 
 	public knight(int x, int y,boolean black,mycharacter[][] t) {
 		// TODO Auto-generated constructor stub
 		super(x,y,black,t);
-	
+		this.setBackground(Color.RED);
 	}
 
 	@Override
 	public void move() 
 	{
-		Xpos=newXMoveLoc;
-		Ypos=newYMoveLoc;
+		if(checkIfValidMove())
+		{
+			Xpos=newXMoveLoc;
+			Ypos=newYMoveLoc;
+		}
 	}
 	public boolean checkIfValidMove()
 	{
@@ -33,6 +38,10 @@ public class knight extends mycharacter {
 		newXMoveLoc=y.Xpos;
 		newYMoveLoc=y.Ypos;
 	}
+
+	
+
+	
 	
 
 }

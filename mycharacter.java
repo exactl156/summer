@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public class mycharacter extends JButton {
+public abstract class mycharacter extends JButton {
 /**
 	 * 
 	 */
@@ -15,11 +15,17 @@ protected int Xpos;
 protected int Ypos;
 protected mycharacter[][] z;
 protected boolean isSelected;
-private ActionListener l;
+protected mycharacter isSelectedObject;
+
+protected static ActionListener l;
 protected boolean isBlack;
+protected int newXMoveLoc;
+protected int newYMoveLoc;
+protected boolean hasmoved;
 
 	public mycharacter(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 	super();
+	isSelectedObject=null;
 	isBlack=bl;
 	this.setForeground(Color.ORANGE);
 	z=t;
@@ -46,22 +52,50 @@ protected boolean isBlack;
 	
 	isSelected = false;	
 	l = new ActionListener() {
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			if(!isSelected)
+			System.out.println("666");
+			if(!isSelected&&isSelectedObject==null)
 			{
 				isSelected=true;
+				setSelfIsSelectedObject();
+				for(mycharacter[] x: z)
+				{
+					for(mycharacter y:x)
+					{
+						y.isSelectedObject=getIsSelectedObject();
+					}
+				}
 			}
+			else
+			{
+				isSelected=false;
+				mycharacter t= getIsSelectedObject();
+				t.getUserInput(getSelf());
+				t.move();
+				isSelectedObject=null;
+				hasmoved = true;
+			
+			}
+			
 		}
 	};
+	
 	this.addActionListener(l);
 	}
 
 	public void move()
 	{
-		
+		if(checkIfValidMove())
+		{
+			emptySquare	A=	new emptySquare(Ypos,Xpos,true,z);
+			System.out.print("1");
+				z[Ypos][Xpos]=A;
+			Xpos=newXMoveLoc;
+			Ypos=newYMoveLoc;
+			z[Ypos][Xpos]=this;
+		}
+	
 	}
 
 	public int getXpos() 
@@ -79,19 +113,26 @@ public int getYpos()
 	return Ypos;
 }
 
+public mycharacter getIsSelectedObject() {
+	return isSelectedObject;
+}
+
+public void setIsSelectedObject(mycharacter isSelectedObject) {
+	this.isSelectedObject = isSelectedObject;
+}
+public void setSelfIsSelectedObject() {
+	this.isSelectedObject = this;
+}
+
 public void setYpos(int ypos) 
 {
 	Ypos = ypos;
 }
-public void getUserInput(mycharacter y) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-public boolean checkIfValidMove()
-{
-	return true;
+public mycharacter getSelf() {
+	return this;
 }
+public abstract boolean checkIfValidMove();
+public abstract void getUserInput(mycharacter y);
 
 	
 }

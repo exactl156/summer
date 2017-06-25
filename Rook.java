@@ -1,12 +1,19 @@
 package chess;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+
 public class Rook extends mycharacter
 {
-	private static int newXMoveLoc;
-	private static int newYMoveLoc;
+	
 	public Rook(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
-		
+	this.setBackground(Color.black);
+	
 	}
 
 	/**
@@ -15,18 +22,10 @@ public class Rook extends mycharacter
 	private static final long serialVersionUID = -7771619322964426430L;
 
 	@Override
-	public void move() 
-	{
-		if(checkIfValidMove())
-		{
-			Xpos=newXMoveLoc;
-			Ypos=newYMoveLoc;
-		}
-		
-	}
 	public boolean checkIfValidMove()
 	{
-		if(Xpos!=newXMoveLoc&&Ypos!=newYMoveLoc)
+		return true;
+		/*if(Xpos!=newXMoveLoc&&Ypos!=newYMoveLoc)
 		{
 			return false;
 		}
@@ -93,11 +92,23 @@ public class Rook extends mycharacter
 				}
 			}
 		}
-		return true;
+		return true;*/
 	}
 	
 	public void getUserInput(mycharacter y) {
 		newXMoveLoc=y.Xpos;
 		newYMoveLoc=y.Ypos;
 	}
+
+	@Override
+	public void move() {
+		// TODO Auto-generated method stub
+		super.move();
+		this.setBackground(Color.BLACK);
+	}
+
+	
+
+	
+	
 }

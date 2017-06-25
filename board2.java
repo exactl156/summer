@@ -42,6 +42,7 @@ public class board2 extends JPanel {
 
 	private double ysize;
 	private mycharacter[][]  buttons;
+	private boolean needsUpdating;
 
 
 	public board2() throws IOException 
@@ -60,15 +61,20 @@ public class board2 extends JPanel {
 		
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
+			
 			A=	new emptySquare(i,j,true,buttons);
 				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					if(i==5&&j==4)
+					{
+						A= new Rook(i,j,true,buttons);
+					}
 				
-				buttons[i][j]=A;	
+				buttons[j][i]=A;	
 				add(A);
 			}
 			
 		}
-		time = new Timer(10000, new ActionListener() {
+		time = new Timer(10, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -79,24 +85,43 @@ public class board2 extends JPanel {
 	}
 	public void Update()
 	{		
-		
-		
-		
-
+	
 		for (int i = 0; i < 9; i++) 
 		{
 			for (int j = 0; j < 9; j++) 
-			{
-				System.out.print(buttons.length);
-				if(buttons.length>0){		
+			{		
 					mycharacter temp= buttons[i][j];
-					if(temp.isSelected)
+					if(temp.hasmoved)
 				{
-					temp.setIcon(new ImageIcon("ty.jpg"));
+					temp.hasmoved=false;
+					needsUpdating=true;		 
+					buttons[i][j] = new emptySquare(i, j,true, buttons);
+					buttons[temp.Ypos][temp.Xpos]=temp;
+					removeAll();
+					revalidate();
+					repaint();
+					
 				}
-				}
+					
+				
 			}
 		}
+		if(needsUpdating)
+		{
+		for(mycharacter[] x: buttons)
+		{
+			for(mycharacter y:x)
+			{
+				add(y);
+				y.revalidate();
+				y.repaint();
+				revalidate();
+				repaint();
+			}
+		}
+		needsUpdating= false;
+		}
+	
 	}
 
 
