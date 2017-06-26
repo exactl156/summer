@@ -17,21 +17,23 @@ public class knight extends mycharacter {
 		this.setBackground(Color.RED);
 	}
 
+	
 	@Override
 	public void move() 
 	{
-		if(checkIfValidMove())
+		super.move();
+		this.setBackground(Color.GREEN);
+		/*if(checkIfValidMove())
 		{
 			Xpos=newXMoveLoc;
 			Ypos=newYMoveLoc;
-		}
+		}*/
 	}
 	public boolean checkIfValidMove()
 	{
-		return (newXMoveLoc<9&&newXMoveLoc>0)
-				&&(newYMoveLoc<9&&newYMoveLoc>0)
-				&&((newXMoveLoc-Xpos)*(newXMoveLoc-Xpos)+(newYMoveLoc-Ypos)*(newYMoveLoc-Ypos)==5)
-				&&(!(z[newXMoveLoc][newYMoveLoc].isBlack!=this.isBlack));
+		return 
+				((newXMoveLoc-Xpos)*(newXMoveLoc-Xpos)+(newYMoveLoc-Ypos)*(newYMoveLoc-Ypos)==5);
+//				&&(!(z[newXMoveLoc][newYMoveLoc].isBlack!=this.isBlack));
 	}
 	
 	public void getUserInput(mycharacter y) {

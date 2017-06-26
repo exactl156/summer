@@ -66,6 +66,7 @@ protected boolean hasmoved;
 					for(mycharacter y:x)
 					{
 						y.isSelectedObject=getIsSelectedObject();
+						isSelected=true;
 					}
 				}
 			}
@@ -74,11 +75,11 @@ protected boolean hasmoved;
 				isSelected=false;
 				mycharacter t= getIsSelectedObject();
 				t.getUserInput(getSelf());
-				System.out.println("678");
+				
 				t.move();
+				System.out.println("678"+t.Xpos);
 				isSelectedObject=null;
 				hasmoved = true;
-			
 			}
 			
 		}

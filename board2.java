@@ -86,8 +86,18 @@ public class board2 extends JPanel {
 	}
 	public void Update()
 	{		
+		removeAll();
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+			
+				A=	buttons[i][j];
+				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);	
+				add(A);
+			}
+			
+		}
 	
-		for (int i = 0; i < 9; i++) 
+	/*	for (int i = 0; i < 9; i++) 
 		{
 			for (int j = 0; j < 9; j++) 
 			{		
@@ -119,9 +129,11 @@ public class board2 extends JPanel {
 			}
 		}
 		needsUpdating= false;
-		}
+		}*/
 	
 	}
 
-
 }
+
+
+
