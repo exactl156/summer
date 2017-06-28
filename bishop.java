@@ -1,5 +1,7 @@
 package chess;
 
+import java.awt.Color;
+
 public class bishop extends mycharacter
 {
 
@@ -10,6 +12,7 @@ public class bishop extends mycharacter
 
 	public bishop(int xpos, int ypos, boolean bl, mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
+		this.setBackground(Color.GREEN);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -17,12 +20,6 @@ public class bishop extends mycharacter
 	public boolean checkIfValidMove() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

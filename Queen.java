@@ -1,10 +1,18 @@
 package chess;
 
+import java.awt.Color;
+
 public class Queen extends mycharacter 
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6803903311686410236L;
+
 	public Queen(int xpos, int ypos, boolean bl, mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
+		this.setBackground(Color.magenta);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -138,12 +146,4 @@ public class Queen extends mycharacter
 		}
 		return false;
 	}
-
-	@Override
-	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
-		newXMoveLoc=y.Xpos;
-		newYMoveLoc=y.Ypos;
-	}
-
 }

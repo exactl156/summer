@@ -35,16 +35,4 @@ public class knight extends mycharacter {
 				((newXMoveLoc-Xpos)*(newXMoveLoc-Xpos)+(newYMoveLoc-Ypos)*(newYMoveLoc-Ypos)==5);
 //				&&(!(z[newXMoveLoc][newYMoveLoc].isBlack!=this.isBlack));
 	}
-	
-	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
-		newXMoveLoc=y.Xpos;
-		newYMoveLoc=y.Ypos;
-	}
-
-	
-
-	
-	
-
 }

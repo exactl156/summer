@@ -64,15 +64,65 @@ public class board2 extends JPanel {
 			
 			A=	new emptySquare(i,j,false,buttons);
 				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
-					if(i==5&&j==4)
+					//White pieces
+				 if(i==8&&(j==5))
 					{
-						A= new knight(i,j,true,buttons);
+						A= new Queen(j,i,true,buttons);
 						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 					}
-					if(i==6&&j==7)
+				 if(i==8&&(j==4))
 					{
-						A= new Rook(i,j,true,buttons);
+						A= new king(j,i,true,buttons);
 						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}	
+				 if(i==8&&(j==3||j==6))
+					{
+						A= new bishop(j,i,true,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
+				 	if(i==8&&(j==2||j==7))
+					{
+						A= new knight(j,i,true,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
+					if(i==8&&(j==8||j==1))
+					{
+						A= new Rook(j,i,true,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
+					if((i==2)&&(j>0))
+					{
+						A=new pawn(j, i, true, buttons);
+					}
+					// black pieces
+					 if(i==1&&(j==5))
+						{
+							A= new Queen(j,i,false,buttons);
+							A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+						}
+					 if(i==1&&(j==4))
+						{
+							A= new king(j,i,false,buttons);
+							A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+						}	
+					 if(i==1&&(j==3||j==6))
+						{
+							A= new bishop(j,i,false,buttons);
+							A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+						}
+					if(i==1&&(j==2||j==7))
+					{
+						A= new knight(j,i,false,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
+					if(i==1&&(j==8||j==1))
+					{
+						A= new Rook(j,i,false,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
+					if((i==7)&&(j>0))
+					{
+						A=new pawn(j, i, true, buttons);
 					}
 				
 				buttons[j][i]=A;	

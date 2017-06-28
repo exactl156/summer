@@ -1,5 +1,7 @@
 package chess;
 
+import java.awt.Color;
+
 public class pawn extends mycharacter {
 
 	/**
@@ -9,25 +11,18 @@ public class pawn extends mycharacter {
 
 	public pawn(int xpos, int ypos, boolean bl, mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
+		this.setBackground(Color.cyan);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean checkIfValidMove() {
 		if(isBlack)
-		if(z[Xpos][Ypos+1]instanceof emptySquare) 
+		if(z[newXMoveLoc][newYMoveLoc-1]instanceof emptySquare) 
 		{
-			
+			return true;
 		}
 				
 		return false;
 	}
-
-	@Override
-	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
-		newXMoveLoc=y.Xpos;
-		newYMoveLoc=y.Ypos;
-	}
-
 }

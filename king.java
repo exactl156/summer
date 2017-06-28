@@ -1,5 +1,7 @@
 package chess;
 
+import java.awt.Color;
+
 public class king extends mycharacter
 {
 
@@ -10,6 +12,7 @@ public class king extends mycharacter
 
 	public king(int xpos, int ypos, boolean bl, mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
+		setBackground(Color.YELLOW);
 		// TODO Auto-generated constructor stub
 	}
 

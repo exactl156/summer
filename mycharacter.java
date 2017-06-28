@@ -3,6 +3,7 @@ package chess;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
@@ -13,10 +14,11 @@ public abstract class mycharacter extends JButton {
 	private static final long serialVersionUID = -1077474492673682496L;
 protected int Xpos;
 protected int Ypos;
+protected boolean gameOver;
 protected mycharacter[][] z;
 protected boolean isSelected;
 protected mycharacter isSelectedObject;
-
+protected ArrayList<mycharacter> ValidMoves;
 protected static ActionListener l;
 protected boolean isBlack;
 protected int newXMoveLoc;
@@ -25,6 +27,8 @@ protected boolean hasmoved;
 
 	public mycharacter(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 	super();
+	ValidMoves= new ArrayList<mycharacter>();
+	gameOver=false;
 	isSelectedObject=null;
 	isBlack=bl;
 	this.setForeground(Color.ORANGE);
@@ -56,30 +60,28 @@ protected boolean hasmoved;
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("666");
 			System.out.println("666"+isSelected);
-			if(!isSelected&&isSelectedObject==null)
-			{
-				isSelected=true;
-				setSelfIsSelectedObject();
-				System.out.println("676");
-				for(mycharacter[] x: z)
-				{
-					for(mycharacter y:x)
-					{
-						y.isSelectedObject=getIsSelectedObject();
-						isSelected=true;
+			if (!gameOver) {
+				if (!isSelected && isSelectedObject == null) {
+					isSelected = true;
+					setSelfIsSelectedObject();
+					System.out.println("676");
+					for (mycharacter[] x : z) {
+						for (mycharacter y : x) {
+							y.isSelectedObject = getIsSelectedObject();
+							isSelected = true;
+						}
 					}
-				}
-			}
-			else
-			{
-				isSelected=false;
-				mycharacter t= getIsSelectedObject();
-				t.getUserInput(getSelf());
-				
-				t.move();
-				System.out.println("678"+t.Xpos);
-				isSelectedObject=null;
-				hasmoved = true;
+					HighlightPossibleMoves();
+				} else {
+					isSelected = false;
+					mycharacter t = getIsSelectedObject();
+					t.getUserInput(getSelf());
+
+					t.move();
+					System.out.println("678" + t.Xpos);
+					isSelectedObject = null;
+					hasmoved = true;
+				} 
 			}
 			
 		}
@@ -88,6 +90,24 @@ protected boolean hasmoved;
 	this.addActionListener(l);
 	}
 
+	protected void HighlightPossibleMoves() {
+		for (mycharacter[] x : z) {
+			for (mycharacter y : x) {
+				if(checkIfValidMove(y)&&(!y.equals(this)))
+				{
+					y.setBackground(Color.PINK);
+				}
+			}
+		}
+	}
+	public boolean equals(mycharacter r)
+	{
+		if(Xpos==r.Xpos&&Ypos==r.Ypos)
+		{
+			return true;
+		}
+		return false;
+	}
 	public void move()
 	{
 		if(checkIfValidMove())
@@ -139,8 +159,29 @@ public void setYpos(int ypos)
 public mycharacter getSelf() {
 	return this;
 }
-public abstract boolean checkIfValidMove();
-public abstract void getUserInput(mycharacter y);
+public boolean checkIfValidMove(mycharacter y)
+{
+	int	temp1=newXMoveLoc,temp2=newYMoveLoc;
+	newXMoveLoc=y.Xpos;
+	newYMoveLoc=y.Ypos;
+	if(checkIfValidMove())
+	{
+		newXMoveLoc=temp1;
+		newYMoveLoc=temp2;
+		return true;
+	}
+	else
+	{
+		newXMoveLoc=temp1;
+		newYMoveLoc=temp2;
+	return false;
+	}
+}
+public void getUserInput(mycharacter y)
+{
+	newXMoveLoc=y.Xpos;
+	newYMoveLoc=y.Ypos;
+}
 
-	
+public abstract boolean checkIfValidMove();	
 }

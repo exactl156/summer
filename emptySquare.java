@@ -36,20 +36,15 @@ public class emptySquare extends mycharacter
 		setBackground(Color.GRAY);
 		
 	}
-	
-	
-	@Override
-	public void getUserInput(mycharacter y) {
-		// TODO Auto-generated method stub
-		this.newXMoveLoc=y.Xpos;
-		this.newYMoveLoc=y.Ypos;
-	}
+
 
 	@Override
 	public boolean checkIfValidMove() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
 
 	
 

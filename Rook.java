@@ -94,16 +94,11 @@ public class Rook extends mycharacter
 		return true;
 	}
 	
-	public void getUserInput(mycharacter y) {
-		newXMoveLoc=y.Xpos;
-		newYMoveLoc=y.Ypos;
-	}
+	
 
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		super.move();
-	}
+	
+
+	
 
 	
 
