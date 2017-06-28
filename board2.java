@@ -69,6 +69,11 @@ public class board2 extends JPanel {
 						A= new knight(i,j,true,buttons);
 						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
 					}
+					if(i==6&&j==7)
+					{
+						A= new Rook(i,j,true,buttons);
+						A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);
+					}
 				
 				buttons[j][i]=A;	
 				add(A);
@@ -93,9 +98,12 @@ public class board2 extends JPanel {
 				A=	buttons[i][j];
 				 A.setBounds((int)xsize/10*i,(int) ysize*j/10,(int) xsize/10,(int) ysize/10);	
 				add(A);
+				revalidate();
+				
 			}
 			
 		}
+		repaint();
 	
 	/*	for (int i = 0; i < 9; i++) 
 		{

@@ -2,6 +2,7 @@ package chess;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class emptySquare extends mycharacter
 {
@@ -13,6 +14,15 @@ public class emptySquare extends mycharacter
 			this.setBackground(Color.black);
 		else
 			this.setBackground(Color.BLUE);
+		this.removeActionListener(l);
+		this.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	/**
@@ -26,7 +36,8 @@ public class emptySquare extends mycharacter
 		setBackground(Color.GRAY);
 		
 	}
-
+	
+	
 	@Override
 	public void getUserInput(mycharacter y) {
 		// TODO Auto-generated method stub

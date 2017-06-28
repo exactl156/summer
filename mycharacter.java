@@ -94,7 +94,11 @@ protected boolean hasmoved;
 		{
 			emptySquare	A=	new emptySquare(Ypos,Xpos,false,z);
 			System.out.print("1");
-				z[Ypos][Xpos]=A;
+			if((Xpos+Ypos)%2==1)
+				A.setBackground(Color.black);
+			else
+				A.setBackground(Color.BLUE);
+			z[Ypos][Xpos]=A;
 			Xpos=newXMoveLoc;
 			Ypos=newYMoveLoc;
 			z[Ypos][Xpos]=this;

@@ -12,7 +12,7 @@ public class Rook extends mycharacter
 	
 	public Rook(int xpos, int ypos, boolean bl,mycharacter[][] t) {
 		super(xpos, ypos, bl, t);
-	this.setBackground(Color.black);
+	this.setBackground(Color.ORANGE);
 	this.setEnabled(true);
 	}
 
@@ -24,8 +24,7 @@ public class Rook extends mycharacter
 	@Override
 	public boolean checkIfValidMove()
 	{
-		return true;
-		/*if(Xpos!=newXMoveLoc&&Ypos!=newYMoveLoc)
+		if(Xpos!=newXMoveLoc&&Ypos!=newYMoveLoc)
 		{
 			return false;
 		}
@@ -92,7 +91,7 @@ public class Rook extends mycharacter
 				}
 			}
 		}
-		return true;*/
+		return true;
 	}
 	
 	public void getUserInput(mycharacter y) {
@@ -104,7 +103,6 @@ public class Rook extends mycharacter
 	public void move() {
 		// TODO Auto-generated method stub
 		super.move();
-		this.setBackground(Color.BLACK);
 	}
 
 	
